@@ -55,7 +55,7 @@ There are three validations to the `Transaction` model:
 
 The application contains the following specified routes along with the appropriate HTTP verb.
 
-### GET /balance
+### GET /balances
 
 For all existing recent `Transaction`s created, return JSON data in the format below without repeating payers:
 

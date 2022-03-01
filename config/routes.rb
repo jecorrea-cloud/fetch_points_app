@@ -5,6 +5,6 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
   get '/balances', to: 'transactions#index'
-  post '/add_transaction', to: 'transactions#create'
-  post '/spend_points', to: 'transactions#spend'
+  post '/add_transaction', to: 'transactions#create_transactions'
+  post '/spend_points', to: 'transactions#spend_points'
 end

@@ -11,10 +11,10 @@ class TransactionsController < ApplicationController
         render json: recent_transactions
     end
 
-    def create
+    def create_transactions
         #Variable with the input params from the request
         new_transaction = Transaction.create(transaction_params)
-        #Check whether they are valid or not. If they are return the object just created and the status or error messages
+        #Check whether they are valid or not. If they are, return the object just created and the status or error messages
         if new_transaction.valid?
             render json: new_transaction, status: 201
         else
@@ -22,7 +22,7 @@ class TransactionsController < ApplicationController
         end
     end
 
-    def spend
+    def spend_points
         
     end
 
