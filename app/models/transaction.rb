@@ -5,7 +5,7 @@ class Transaction < ApplicationRecord
 
      #Helper class methods for the spend method in the controller
 
-     
+     # Get the total points in the database
      def total
         total_points = 0
         current_points = []
@@ -15,5 +15,8 @@ class Transaction < ApplicationRecord
         total_points = current_points.sum
      end
 
+     def spend(spend)
+        
+     end
 
 end
