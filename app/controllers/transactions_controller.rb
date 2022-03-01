@@ -11,6 +11,17 @@ class TransactionsController < ApplicationController
         render json: recent_transactions
     end
 
+    def create
+        #Variable with the params from the request
+        new_transaction = Transaction.create(transaction_params)
+        #Check whether it is valid or not
+        if new_transaction.valid?
+            render json: new_transaction, status: 201
+        else
+            render json: {"errors": new_transaction.errors.full_messages}, status: 422
+        end
+    end
+
     private
 
     def transaction_params
