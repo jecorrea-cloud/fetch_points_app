@@ -14,7 +14,7 @@ class TransactionsController < ApplicationController
     def create
         #Variable with the input params from the request
         new_transaction = Transaction.create(transaction_params)
-        #Check whether they are valid or not
+        #Check whether they are valid or not. If they are return the object just created and the status or error messages
         if new_transaction.valid?
             render json: new_transaction, status: 201
         else
