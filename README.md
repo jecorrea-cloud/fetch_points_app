@@ -103,7 +103,7 @@ JSON data, along with the appropriate HTTP status code:
 
 ### POST /spend_points
 
-This route substracts a fixed amount of points for every existing payer. It accepts an object with the following property in the body of the request is formatted below:
+This route substracts a fixed amount of points for every existing payer. It accepts an object with the following property in the body of the request below:
 
 ```json
 {
