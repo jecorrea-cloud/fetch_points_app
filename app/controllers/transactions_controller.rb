@@ -22,7 +22,7 @@ class TransactionsController < ApplicationController
         end
     end
 
-    def substract_points
+    def spend_pts
         
     end
 

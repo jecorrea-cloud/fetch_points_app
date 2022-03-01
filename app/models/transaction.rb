@@ -15,7 +15,7 @@ class Transaction < ApplicationRecord
         total_points = current_points.sum
      end
 
-     def spend(spend)
+     def substract_points(spend)
         
      end
 
