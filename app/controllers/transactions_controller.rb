@@ -1,6 +1,6 @@
 class TransactionsController < ApplicationController
 
-    def index 
+    def current_balances 
         #Variables
         transactions = Transaction.all
         recent_transactions = {}
@@ -22,7 +22,7 @@ class TransactionsController < ApplicationController
         end
     end
 
-    def spend_points
+    def substract_points
         
     end
 
