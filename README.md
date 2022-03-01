@@ -1,7 +1,7 @@
 # Fetch Points App
 
 This is a REST API service used to track payers' points. This is accomplished through 3 end points which allow
-the user to check all payers' balances, add transactions for a specific payer and date, and spend the current points.
+the user to check all payers' balances, add transactions for a specific payer and date, and spend(substract) the current points from all payers.
 
 ## Setup
 
