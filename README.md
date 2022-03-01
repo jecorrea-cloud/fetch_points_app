@@ -1,7 +1,7 @@
 # Fetch Points App
 
 This is a REST API service used to track payers' points. This is accomplished through 3 end points which allow
-the user to check all payers' balances, add transactions for a specific payer and date and spend points.
+the user to check all payers' balances, add transactions for a specific payer and date, and spend the current points.
 
 ## Setup
 
@@ -20,9 +20,9 @@ You can run your Rails API on [`localhost:3000`](http://localhost:3000) by runni
 rails s
 ```
 
-## Usage
+## Use
 
-Once the server is up and running, you can test and check the application by running the Rails server and using a service like Postman to make requests.
+Once the server is up and running, you can test and check the application by running the Rails server and using a service like Postman to make the requests.
 
 ## Models
 
@@ -126,5 +126,5 @@ The expected response from the spend call would be:
 If it is not possible to use the points, the expected response from the call is:
 
 ```json
-{ "Fatal": "Not enough points" }
+{ "Fatal": "Not enough points to make the request" }
 ```
