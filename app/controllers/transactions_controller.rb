@@ -23,7 +23,8 @@ class TransactionsController < ApplicationController
     end
 
     def spend_pts
-        
+        spent = Transaction.substract_points(params[:points].to_i)
+        render json: spent, status: 201
     end
 
     private
