@@ -23,6 +23,7 @@ class TransactionsController < ApplicationController
     end
 
     def spend_pts
+        #Call on the class helper method to substract points and return balances
         spent = Transaction.substract_points(params[:points].to_i)
         render json: spent, status: 201
     end
