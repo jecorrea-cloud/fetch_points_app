@@ -6,5 +6,5 @@ Rails.application.routes.draw do
   # root "articles#index"
   get '/balances', to: 'transactions#current_balances'
   post '/add_transaction', to: 'transactions#create_transaction'
-  post '/spend_points', to: 'transactions#substract_points'
+  post '/spend_points', to: 'transactions#spend_pts'
 end

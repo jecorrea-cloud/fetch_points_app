@@ -22,7 +22,7 @@ rails s
 
 ## Use
 
-Once the server is up and running, you can test and check the application by running the Rails server and using a service like Postman to make the requests.
+Once the server is up and running, you can test and check the application by running a service like Postman to make the requests.
 
 ## Models
 
@@ -101,7 +101,7 @@ JSON data, along with the appropriate HTTP status code:
 }
 ```
 
-### POST /spend_pts
+### POST /spend_points
 
 This route substracts a fixed amount of points for every existing payer. It accepts an object with the following property in the body of the request below:
 
