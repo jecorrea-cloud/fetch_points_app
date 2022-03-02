@@ -16,32 +16,37 @@ class Transaction < ApplicationRecord
      end
 
      # Substract the points while making sure the transactions' points don't drop to zero
-     def substract_points(spend)
-        sorted = self.all.sort_by(&:timestamp)
+     def substract_points(spending_pts)
+        # Sort all transactions by recent date
+        sorted_trans = self.all.sort_by(&:timestamp)
+        # Hash to return balances
         used_points = {}
-        if self.total < spend
-            "Not enough points to make the request"
+        # Conditional. If the total points are not enough to be spent, return a message
+        if self.total < spending_pts
+            {"Fatal": "Not enough points to make the request"}
         else
+            #Iterate if there are enough points in the database
             i = 0
-            while i < sorted.length do
-                if spend <= 0 
+            while i < sorted_trans.length do
+                # If the input points are negative, exit
+                if spending_pts <= 0 
                     break
                 end
-                if sorted[i].points > 0
-                    if spend - sorted[i].points >= 0
-                        used_points[sorted[i].payer] = -1 * sorted[i].points
-                        spend = spend - sorted[i].points
-                        Transaction.update(sorted[i].id, :points => 0)
+                if sorted_trans[i].points > 0
+                    if spending_pts - sorted_trans[i].points >= 0
+                        used_points[sorted_trans[i].payer] = -1 * sorted_trans[i].points
+                        spending_pts = spending_pts - sorted_trans[i].points
+                        Transaction.update(sorted_trans[i].id, :points => 0)
                     else
-                        remaining = sorted[i].points - spend
-                        used_points[sorted[i].payer] = -1 * spend
-                        spend = 0
-                        Transaction.update(sorted[i].id, :points => remaining)
+                        remaining = sorted_trans[i].points - spending_pts
+                        used_points[sorted_trans[i].payer] = -1 * spending_pts
+                        spending_pts = 0
+                        Transaction.update(sorted_trans[i].id, :points => remaining)
                     end
                 else
-                    spend = spend - sorted[i].points
-                    used_points[sorted[i].payer] = -sorted[i].points
-                    Transaction.update(sorted[i].id, :points => 0)
+                    spending_pts = spending_pts - sorted_trans[i].points
+                    used_points[sorted_trans[i].payer] = -sorted_trans[i].points
+                    Transaction.update(sorted_trans[i].id, :points => 0)
                 end
                 i+= 1
             end
