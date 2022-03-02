@@ -25,13 +25,13 @@ class Transaction < ApplicationRecord
         if self.total < spending_pts
             {"Fatal": "Not enough points to make the request"}
         else
-            #Iterate if there are enough points in the database
-            i = 0
-            while i < sorted_trans.length do
-                # If the input points are negative, exit
+            # Otherwise, iterate through if there are enough points in the database
+            for i in 0...sorted_trans.length do
+                # If the input points happen to be negative, exit
                 if spending_pts <= 0 
                     break
                 end
+
                 if sorted_trans[i].points > 0
                     if spending_pts - sorted_trans[i].points >= 0
                         used_points[sorted_trans[i].payer] = -1 * sorted_trans[i].points
@@ -48,7 +48,6 @@ class Transaction < ApplicationRecord
                     used_points[sorted_trans[i].payer] = -sorted_trans[i].points
                     Transaction.update(sorted_trans[i].id, :points => 0)
                 end
-                i+= 1
             end
         end
         used_points
