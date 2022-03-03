@@ -1,7 +1,7 @@
 class TransactionsController < ApplicationController
 
     def current_balances 
-        #Variables
+        #Bring down all present transactions in the database
         transactions = Transaction.all
         recent_transactions = {}
         #Iterate through all existing hashes in the database and take out the proper attributes from them
