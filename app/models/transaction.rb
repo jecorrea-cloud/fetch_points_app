@@ -33,12 +33,12 @@ class Transaction < ApplicationRecord
                 end
                 # Check if the current transaction's balance is not 0
                 if sorted_trans[i].points > 0
-                    # Case when the substraction is positive (spending points are greater than balance)
+                    # Case when the substraction is positive (input points are greater than balance points)
                     if spending_pts - sorted_trans[i].points >= 0
                         used_points[sorted_trans[i].payer] = -1 * sorted_trans[i].points
                         spending_pts = spending_pts - sorted_trans[i].points
                         Transaction.update(sorted_trans[i].id, :points => 0)
-                    # Case when the substraction is negative (spending points are less than balance)
+                    # Case when the substraction is negative (input points are less than balance points)
                     else
                         remaining = sorted_trans[i].points - spending_pts
                         used_points[sorted_trans[i].payer] = -1 * spending_pts
